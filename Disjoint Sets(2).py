@@ -1,10 +1,12 @@
-#공통 원소가 없는 두 집합, 트리 자료구조를 이용하여 집합을 표현하는데 알고리즘은 다음과 같다.
-#1.union(합집합) 연산을 확인하여, 서로 연결된 두 노드 A,B를 확인한다. A와 B의 루트 노드 A',B'를 찾는다. A'를 B'의 부모 노드로 설정한다. 
-#2. 모든 union연산을 처리할때까지 1의 과정을 반복한다.
+#경로 압축 기법 사용하여 최적화를 한다.
+#경로 압축 기법: find 함수를 재귀적으로 호출한 뒤에 부모 테이블값을 갱신
+#O(V+M(1+log(3-M/V)(V)))이다.
+
 def find_parent(parent,x):
     if parent[x]!=x:
-        return find_parent(parent,parent[x]) #특정 원소가 속한 집합을 찾아서, 루트 노드가 아니라면 루트 노드를 찾을 때까지 재귀적으로 호출
-    return x
+        parent[x]=find_parent(parent,parent[x])
+    return parent[x] #특정 원소가 속한 집합을 찾아서, 루트 노드가 아니라면 루트 노드를 찾을 때까지 재귀적으로 호출
+    
 
 def union_parent(parent,a,b): #두 원소가 속한 집합을 합치기
     a=find_parent(parent,a)
