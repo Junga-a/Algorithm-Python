@@ -6,7 +6,7 @@
 n,k=map(int,input().split())
 result=0
 
-#N이 K 이상이라면 K로 계속 나누기
+# N이 K 이상이라면 K로 계속 나누기
 while n>=k:
     while n%k!=0:
         n-=1
@@ -14,7 +14,7 @@ while n>=k:
     n//=k
     result+=1
 
-#마지막으로 남은 n이 2, k가 3이거나 n이 4, k가 5이면 즉, n이 1보다 크면 1이 될때까지 n을 1개씩 빼주고 result에 1씩 더해준다.
+# 마지막으로 남은 n이 2, k가 3이거나 n이 4, k가 5이면 즉, n이 1보다 크면 1이 될때까지 n을 1개씩 빼주고 result에 1씩 더해준다.
 while n>1:
     n-=1
     result+=1
